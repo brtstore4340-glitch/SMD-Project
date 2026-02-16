@@ -1,15 +1,61 @@
-# Atomic Tasks
+# Task.md — Task Template (copy to tasks/task_<id>.md)
 
-| ID | Title | Agent | Status | DoD (Definition of Done) |
-|----|-------|-------|--------|--------------------------|
-| **001** | **Scaffold Service Layer** | A1 | **To Do** | Create `src/services/` and `src/state/`. Define types for Supabase Client. |
-| **002** | **Init Supabase Client** | A4 | **Done** | Create `src/services/supabase.ts`. Ensure singleton instance. Environment variables config. |
-| **003** | **Create AuthService** | A4 | **Done** | Implement `signIn`, `signUp`, `signOut` in `src/services/auth.ts`. **NO UI CODE**. |
-| **004** | **Connect Auth UI** | A2 | **To Do** | Update `SignIn.tsx` to call `AuthService`. Remove mock logic. |
-| **005** | **Verify Auth Flow** | A3 | **To Do** | Log evidence of successful login and session persistence. |
+## Header
+- Task ID: task_<YYYYMMDD>_<NNN>
+- Title: <short>
+- Owner: Orchestrator / Planner / Coder / Tester / Reviewer
+- Stage: Scan / Plan / Patch / Validate / Report
+- Priority: P0 / P1 / P2
+- Depends on: <task ids or "none">
 
-## Status Legend
-- **To Do**: Ready for assignment.
-- **In Progress**: Agent currently working.
-- **Review**: Evidence submitted, waiting for Orchestrator.
-- **Done**: Verified and Merged.
+## Context
+- Why this matters: 🎯 Deliver MVP that ingests Excel/CSV at scale, scrapes/API-collects priority sites (selective real-time), and reports on 50k+ SKUs with role-aware visibility.
+- Constraints:
+  - Simplicity First / Minimal Impact
+  - No Laziness (root cause)
+  - Verification Before Done (evidence required)
+  - Self-Improvement Loop (update lessons after corrections)
+  - 🏗️ Zero-budget stack: Firebase Hosting/GitHub Pages + Supabase free tier (DB/Auth), limited jobs
+  - 👉 APIs preferred; headless scraping only for critical dynamic sources; Gmail OAuth with multi-account mapping for non-admin roles
+
+## Plan (Checklist)
+- [ ] Step 1:
+- [ ] Step 2:
+- [ ] Step 3:
+
+## Patch Summary
+- Files changed:
+- What changed (high-level):
+- Why (root cause):
+
+## Verification (Reproducible)
+Commands run:
+- `<command 1>`
+- `<command 2>`
+
+Results:
+- ExitCodes:
+- Notes:
+
+## Evidence (Required)
+- Logs: `tools/logs/<...>.log`
+- Diff/Commit: `<hash>` or file list
+- Artifacts/Screens: `tasks/evidence/<...>`
+
+## Definition of Done (DoD)
+- [ ] Acceptance criteria met
+- [ ] Verification passed (tests/logs)
+- [ ] Evidence linked
+- [ ] Minimal impact confirmed (only necessary files touched)
+- [ ] Lessons updated (if user corrected anything)
+
+## Report (Final)
+- Summary:
+- Proof it works:
+- Risks/edge cases:
+- Next suggested task (5-line format):
+  - Context:
+  - Stage:
+  - Task:
+  - Evidence required:
+  - Definition of Done:

@@ -1,40 +1,45 @@
-# Project Requirements Document (PRD)
+# SMD-Project — PRD
 
-**Project**: Calm Coder Implementation - POS System Integration
-**Date**: 2026-02-15
-**Status**: Draft
+## Problem Statement
+Development changes can drift in scope and break reproducibility without a strict plan/evidence workflow.
 
-## 1. Goal
-Refactor and extend the existing `free-react-tailwind-admin-dashboard-main` to serve as a robust, Supabase-backed Point of Sale (POS) and Admin system.
-**Key Objective**: Reduce failure by enforcing strict architecture gates (SDE: State/Derived/Effect).
+## Goals
+- Deliver changes in small increments with clear stage gates
+- Require evidence for every completed task
+- Keep repo maintainable with minimal-impact patches
 
-## 2. Architecture Principles (Svelte 5 Runes Logic)
-To ensure stability and debuggability, we enforce "Svelte 5 Runes" logic patterns, even in React:
+## Non-Goals
+- Large refactors not explicitly planned
+- Changing architecture without explicit PRD update
+- “It seems to work” completions without proof
 
-1.  **STATE (Mutable Source of Truth)**
-    -   Minimal.
-    -   React: `useState`, Context Providers.
-    -   *Rule*: Only update via specific actions/setters.
-2.  **DERIVED (Pure Computed)**
-    -   Pure functions of State.
-    -   React: `useMemo`, variables in render.
-    -   *Rule*: **ZERO IO**. No `fetch`, no `supabase`, no `localStorage`, no `Date.now()` (unless passed as arg).
-3.  **EFFECT (Side Effects)**
-    -   IO, Mutations, Subscriptions.
-    -   React: `useEffect`, Event Handlers.
-    -   *Rule*: Must contain all async logic. Must be guarded (abort controllers, flags).
+## Users
+- Maintainers and contributors working on SMD-Project
+- AI agents operating under Orchestrator
 
-## 3. Scope
--   **Phase 1: Foundation**: Setup Calm Coder workflow, Tools, and Supabase Client Wrapper.
--   **Phase 2: Auth**: Replace mock auth with Supabase Auth.
--   **Phase 3: Data**: Connect "Products" and "Orders" to Supabase tables (replacing JSON mocks).
+## Success Metrics
+- Every task completion includes logs/tests/diff evidence
+- Reduced rework caused by ambiguous scope or missing validation
+- Faster onboarding via Runbook + repeatable validation
 
-## 4. Technical Constraints
--   **Frontend**: React + Vite + TypeScript + Tailwind (Existing).
--   **Backend**: Supabase (Auth, Postgres, Realtime).
--   **Security**: RLS enabled on all tables. No direct DB access from UI components (use Service Layer).
+## Constraints
+- One active task at a time
+- Evidence required before done
+- Prefer deterministic, repeatable commands
 
-## 5. Success Metrics
--   **Derived Purity**: 0 violations in scan.
--   **Effect Boundary**: 0 direct `supabase.from` calls in UI components.
--   **Loop Safety**: All `useEffect` with state writes have abort/cleanup.
+## Requirements
+1) Standard workflow: Scan -> Plan -> Patch -> Validate -> Report
+2) Plan.md must track Provision/Active/Done
+3) Runbook.md must provide exact commands for setup and validation
+4) Task.md must capture per-task execution and evidence
+5) Agent.md defines roles and rules to prevent drift
+
+## Acceptance Criteria (Project-Level)
+- Repo contains Plan.md, PRD.md, Runbook.md, Task.md, Agent.md
+- Plan.md includes Provision/Active/Done sections
+- Orchestrator always dispatches tasks using the standard template
+- Completed tasks always reference evidence (logs/tests)
+
+## Risks
+- Over-process can slow progress: mitigate by keeping tasks small
+- Missing evidence discipline: mitigate via Reviewer blocking completion
