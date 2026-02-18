@@ -24,6 +24,21 @@
   - Pass/fail statement
 - Never mark complete without proof (tests/logs/diff).
 
+### Canonical Commands (current)
+- Lint: `npm run lint`
+- Build: `npm run build`
+- Tests: _not yet defined (no test suite)_
+- Log pattern: `tools/logs/<topic>_<yyyymmdd_HHmmss>.log` (use `Tee-Object` to capture).
+
+## Auth Requirements Lock (Immutable)
+- Login is Email + Password only via `supabase.auth.signInWithPassword` (no magic links, no OAuth).
+- Session persistence is required by default (stay logged in across refresh/reopen until explicit logout).
+- One email can own multiple user profiles.
+- After login, user must select/confirm profile using:
+  - User ID: 7 digits
+  - PIN: 4 digits (per-profile)
+- Users can have multiple roles (role-based access).
+
 ## Output Contract (Hard)
 - Every response MUST be one of:
   A) TASK-CLOSED (DoD met + evidence linked + moved Provision→Done + suggest next task)
@@ -39,7 +54,8 @@
 > Pull exactly one task into Active. Prioritize P0, then unblock/risk-reduction items.
 
 ### P0 (Must)
-- [ ] P0-02: Define build/test/lint commands + logging convention (tools/logs)
+- [x] P0-02: Define build/test/lint commands + logging convention (tools/logs)
+- [ ] P0-07: Deploy-ready prep for Vercel (SPA rewrites, env validation, build output)
 - [ ] P0-03: File ingestion MVP — Supabase schema + column/type validation + rejection logging (Excel/CSV, 100s→100k+ rows)
 - [ ] P0-04: Scraping strategy — target list (e-commerce/marketplace/supplier/real-time), API-first matrix, headless plan for JS-heavy sites, Gmail OAuth mapping
 - [ ] P0-05: Real-time scraping pilot for one critical source; document free-tier limits and fallback batching
@@ -59,12 +75,14 @@
 ## Active (Only One)
 > Exactly one active task at a time.
 
-- In progress: P0-02 — Define build/test/lint commands + logging convention (task_20260216_002)
+- In progress: (none)
 
 ## Done (Completed with Evidence)
 > Move items here only after validation. Each item must include evidence references.
 
 - [x] P0-01 — Repo scan + baseline evidence (task_20260216_001) — Evidence: `tools/logs/scan_25690216_122745.log`
+- [x] P0-02 — Define build/test/lint commands + logging convention (task_20260216_002) — Evidence: `tools/logs/validate_25690217_151126.log`
+- [x] P0-07 — Deploy-ready prep for Vercel (task_20260217_001) — Evidence: `tools/logs/deploy_prep_25690217_165905.log`
 
 ## Orchestrator Output Template (Every Task Dispatch)
 - Context: repo + goal + constraints

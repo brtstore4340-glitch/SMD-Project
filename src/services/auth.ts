@@ -17,7 +17,7 @@ export interface SignUpCredentials {
   password: string
   options?: {
     data?: {
-      [key: string]: any
+      [key: string]: unknown
     }
   }
 }
@@ -35,7 +35,7 @@ export const AuthService = {
       email,
       password,
     })
-    return { data: data as any, error }
+    return { data: data as { user: User; session: Session } | null, error }
   },
 
   /**

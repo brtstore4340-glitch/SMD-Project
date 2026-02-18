@@ -1,32 +1,28 @@
 
-import CountryMap from "@/components/ecommerce/CountryMap";
-import SaleMetrics from "@/components/ecommerce/SaleMetrics";
-import RecentSales from "@/components/ecommerce/RecentSales";
-import SalesChart from "@/components/ecommerce/SalesChart";
-import SalesTarget from "@/components/ecommerce/SalesTarget";
-import PageBreadCrumb from "@/components/common/PageBreadCrumb";
-import GridShape from "@/components/common/GridShape";
+import CountryMap from "../components/ecommerce/CountryMap";
+import EcommerceMetrics from "../components/ecommerce/EcommerceMetrics";
+import RecentOrders from "../components/ecommerce/RecentOrders";
+import StatisticsChart from "../components/ecommerce/StatisticsChart";
+import MonthlyTarget from "../components/ecommerce/MonthlyTarget";
+import PageBreadCrumb from "../components/common/PageBreadCrumb";
+import GridShape from "../components/common/GridShape";
 
 const Sales = () => {
   return (
     <section>
-      <PageBreadCrumb
-        title="Sales"
-        pageName="Dashboard"
-        breadCrumbLink="/dashboard"
-      />
+      <PageBreadCrumb pageTitle="Sales" />
       <div className="grid grid-cols-12 gap-4 md:gap-6">
         <div className="col-span-12">
-          <SaleMetrics />
+          <EcommerceMetrics />
         </div>
         <div className="col-span-12 xl:col-span-7">
-          <SalesChart />
+          <StatisticsChart />
         </div>
         <div className="col-span-12 xl:col-span-5">
-          <SalesTarget />
+          <MonthlyTarget />
         </div>
         <div className="col-span-12 xl:col-span-8">
-          <RecentSales />
+          <RecentOrders />
         </div>
         <div className="col-span-12 xl:col-span-4">
           <CountryMap />

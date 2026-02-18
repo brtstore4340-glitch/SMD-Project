@@ -12,6 +12,7 @@ export type Database = {
   public: {
     Tables: {
       // Add tables here as we create them
+      [_ in never]: never
     }
     Views: {
       [_ in never]: never

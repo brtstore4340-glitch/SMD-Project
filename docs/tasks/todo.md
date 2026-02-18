@@ -26,8 +26,6 @@
 
 ## Provision (Backlog)
 > Keep this list prioritized. Orchestrator pulls ONE next task only.
-
-- [ ] P0-02: Define build/test/lint commands + logging convention (tools/logs)
 - [ ] P0-03: File ingestion MVP — Supabase schema + column/type validation + rejection logging (Excel/CSV, 100s→100k+ rows)
 - [ ] P0-04: Scraping strategy — target list (e-commerce/marketplace/supplier/real-time), API-first matrix, headless plan for JS-heavy sites, Gmail OAuth mapping
 - [ ] P0-05: Real-time scraping pilot for one critical source; document free-tier limits and fallback batching
@@ -43,17 +41,20 @@
 ---
 
 ## Active (ONLY ONE)
-- In progress: P0-02 — Define build/test/lint commands + logging convention
-  - Task ID: task_20260216_002
-  - Stage: Scan → Plan
-  - Evidence required: command list and sample outputs saved to `tools/logs/validate_<timestamp>.log`
-  - Definition of Done: Commands documented; sample run log captured; paths recorded
+- In progress: P0-03 — File ingestion MVP (schema + validation + rejection logging)
+  - Task ID: task_20260218_002
+  - Stage: Plan → Patch → Validate → Report
+  - Evidence required: `tools/logs/ingest_prep_<timestamp>.log`, schema/migration files, validation logic
+  - Definition of Done: ingestion schema + validation logic + rejection logging implemented with evidence captured
 
 ---
 
 ## Done (must include evidence link)
 - [x] Workflow docs bootstrap — Evidence: `tools/logs/init_workflow_docs_<timestamp>.log`
 - [x] P0-01 Repo scan + baseline evidence — Evidence: `tools/logs/scan_25690216_122745.log`
+- [x] P0-02 Define build/test/lint commands + logging convention — Evidence: `tools/logs/validate_25690217_151126.log`
+- [x] P0-07 Deploy-ready prep for Vercel — Evidence: `tools/logs/deploy_prep_25690217_165905.log`, `tasks/evidence/task_20260217_001_deploy_ready.md`
+- [x] P0-08 Supabase backend schema (profiles + roles + PIN verification) — Evidence: `tools/logs/backend_prep_25690218_084439.log`
 
 ---
 

@@ -73,6 +73,33 @@ git clone https://github.com/TailAdmin/free-react-tailwind-admin-dashboard.git
    yarn dev
    ```
 
+## Project Environment Variables (Required)
+
+Create a `.env.local` file in the repo root:
+
+```
+VITE_SUPABASE_URL=your_supabase_url
+VITE_SUPABASE_ANON_KEY=your_supabase_anon_key
+```
+
+## Deploy to Vercel (Vite + Supabase)
+
+1) Push the repo to GitHub/GitLab/Bitbucket.
+
+2) In Vercel, import the repo.
+   - Framework preset: Vite
+   - Build command: `npm run build`
+   - Output directory: `dist`
+
+3) Add environment variables in Vercel (Project → Settings → Environment Variables):
+   - `VITE_SUPABASE_URL`
+   - `VITE_SUPABASE_ANON_KEY`
+
+4) Deploy and verify:
+   - App loads at `/`
+   - Refreshing deep routes works (SPA rewrite is configured via `vercel.json`)
+   - Supabase login works in production
+
 ## Components
 
 TailAdmin is a pre-designed starting point for building a web-based dashboard using React.js and Tailwind CSS. The

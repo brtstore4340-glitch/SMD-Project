@@ -50,6 +50,12 @@ Naming guidance:
 - `tools/logs/<topic>_<yyyymmdd_hhmmss>.log`
 - `tasks/evidence/<taskId>_<artifact>.<ext>`
 
+### Canonical build/test/lint commands (capture output with `Tee-Object`)
+- Lint: `npm run lint 2>&1 | Tee-Object -FilePath tools/logs/validate_<timestamp>.log`
+- Build: `npm run build 2>&1 | Tee-Object -FilePath tools/logs/validate_<timestamp>.log -Append`
+- Tests: _none defined yet; add when test suite exists._
+- Timestamp format: `yyyyMMdd_HHmmss` (matches prior evidence files, e.g., `validate_25690216_200930.log`).
+
 ---
 
 ## 4) Safe Operations Policy (Autonomy with a single guardrail)
@@ -94,4 +100,3 @@ Definition of Done: <pass criteria>
 - **Coder**: minimal-impact patching, no unrelated refactors.
 - **Tester/Runner**: runs commands, collects logs/evidence, summarizes pass/fail.
 - **Reviewer**: staff-level review, edge cases, approves-ready checklist, triggers lessons update.
-
